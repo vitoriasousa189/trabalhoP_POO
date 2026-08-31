@@ -8,9 +8,10 @@ class Departamento:
 
     def listar_profissional(self):
         if len(self.profissional) == 0:
-            return f"Departamento: {self.nome} \nNenhum profissional cadastrado."
-
-        texto = f"Departamento: {self.nome}\nProfissionais:\n"
-        for p in self.profissional:
-            texto += f"Nome: {p.nome} | Registro: {p.registro}\n"
-            return texto 
+            print(f"Departamento: {self.nome} \nNenhum profissional cadastrado.")
+        else:
+            print(f"Departamento: {self.nome}")
+            for profissional in self.profissional:
+                print(f"Nome: {profissional.nome} | Registro: {profissional.registro}\n")
+      
+                

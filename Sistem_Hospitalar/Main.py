@@ -36,7 +36,7 @@ print(medico.atender_paciente(paciente))
 print(enfermeiro.atender_paciente(paciente))
 
 print(azul + "\nDepartamento:" + reset)
-print(departamento.listar_profissional())
+departamento.listar_profissional()
 
 print(verde + "Prontuario:" + reset)
 print(prontuario.mostrar())

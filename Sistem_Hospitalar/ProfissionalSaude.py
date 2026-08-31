@@ -6,5 +6,4 @@ class ProfissionalSaude():
 #metodo que vamos subescrever (polimorfismo)
 
     def atender_paciente(self, paciente):
-        
-        pass
+        return f"Atendimento foi iniciado para o(a) paciente {paciente.nome}."
