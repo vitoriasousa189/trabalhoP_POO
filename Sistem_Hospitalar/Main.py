@@ -4,39 +4,48 @@ from Enfermeiro import Enfermeiro
 from Departamento import Departamento
 from Prontuario import Prontuario
 
-# Cores
 verde = "\033[92m"
 azul = "\033[94m"
-amarelo = "\033[93m"
 reset = "\033[0m"
 
 print(azul + "===== SISTEMA HOSPITALAR =====" + reset)
 
-# Paciente
-paciente = Paciente("Ana", "11111111111", 25)
-
-# Profissionais
-medico = Medico("Carmem", "22222222222", "M001", "Cardiologia")
-enfermeiro = Enfermeiro("Romeu", "33333333333", "E001", "Manha")
-
-# Departamento
-departamento = Departamento("Cardiologia")
-departamento.adicionar_profissional(medico)
-departamento.adicionar_profissional(enfermeiro)
-
-# Prontuario
-prontuario = Prontuario()
-prontuario.adicionar_nota("Paciente chegou para atendimento.")
-
-print(verde + "\nPaciente:" + reset)
-print(paciente.nome)
-
-print(amarelo + "\nAtendimento:" + reset)
-print(medico.atender_paciente(paciente))
-print(enfermeiro.atender_paciente(paciente))
-
-print(azul + "\nDepartamento:" + reset)
-departamento.listar_profissional()
-
-print(verde + "Prontuario:" + reset)
-print(prontuario.mostrar())
+while True:
+    print("\n1. Cadastrar Paciente")
+    print("2. Atender Paciente")
+    print("3. Ver Prontuario")
+    print("0. Sair")
+    
+    op = input("Escolha uma opção: ")
+    
+    if op == "0":
+        print(verde + "Saindo... Até logo!" + reset)
+        break
+    elif op == "1":
+        nome = input("Nome do paciente: ")
+        cpf = input("CPF: ")
+        idade = int(input("Idade: "))
+        paciente = Paciente(nome, cpf, idade)
+        print(verde + f"Paciente {nome} cadastrado!" + reset)
+    elif op == "2":
+        m_nome = input("Nome do médico: ")
+        m_cpf = input("CPF do médico: ")
+        m_reg = input("Registro (CRM): ")
+        m_esp = input("Especialidade: ")
+        medico = Medico(m_nome, m_cpf, m_reg, m_esp)
+        
+        p_nome = input("Nome do paciente: ")
+        p_cpf = input("CPF do paciente: ")
+        p_idade = int(input("Idade do paciente: "))
+        paciente = Paciente(p_nome, p_cpf, p_idade)
+        
+        dept = Departamento(m_esp)
+        dept.adicionar_profissional(medico)
+        print(medico.atender_paciente(paciente))
+    elif op == "3":
+        pront = Prontuario()
+        nota = input("Escreva a nota do prontuário: ")
+        pront.adicionar_nota(nota)
+        pront.mostrar()
+    else:
+        print("Opção inválida! Tente de novo!")
